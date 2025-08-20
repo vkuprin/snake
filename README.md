@@ -2,22 +2,8 @@
 
 [![CI](https://github.com/vkuprin/snake/actions/workflows/ci.yml/badge.svg)](https://github.com/vkuprin/snake/actions/workflows/ci.yml)
 [![Code Quality](https://github.com/vkuprin/snake/actions/workflows/quality.yml/badge.svg)](https://github.com/vkuprin/snake/actions/workflows/quality.yml)
-[![Deploy](https://github.com/vkuprin/snake/actions/workflows/deploy.yml/badge.svg)](https://github.com/vkuprin/snake/actions/workflows/deploy.yml)
 
 A classic Snake game built with React 19, TypeScript, and Tailwind CSS. This implementation features modern React patterns, comprehensive testing, and a clean, responsive design.
-
-## 🎮 Game Features
-
-- **Classic Snake Gameplay**: Navigate the snake to eat food and grow longer
-- **Automatic Movement**: Snake moves continuously with direction changes via keyboard
-- **Scoring System**: Earn 3 points per food item consumed
-- **Win/Lose Conditions**:
-  - Win by reaching 30 points
-  - Lose by hitting walls or yourself
-- **Configurable Board Size**: Default 20×20 grid (easily customizable)
-- **Responsive Design**: Works on desktop and mobile devices
-- **Pause/Resume**: Spacebar to pause and resume gameplay
-- **Game Reset**: Reset functionality to start over
 
 ## 🚀 Quick Start
 
@@ -31,7 +17,7 @@ A classic Snake game built with React 19, TypeScript, and Tailwind CSS. This imp
 1. **Clone the repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/vkuprin/snake.git
    cd snake
    ```
 
@@ -143,9 +129,11 @@ npm run test:ui
 ### Test Coverage
 
 - **57 tests** covering all major functionality
-- **Game Logic**: Movement, collision detection, scoring
-- **Components**: Rendering, user interactions, state display
-- **Hooks**: State management, keyboard controls
+- **68% overall code coverage** with detailed reporting
+- **Game Logic**: Movement, collision detection, scoring (97.79% coverage)
+- **Components**: Rendering, user interactions, state display (66.1% coverage)
+- **Hooks**: State management, keyboard controls (51.39% coverage)
+- **Types**: Full type coverage (100% coverage)
 
 ## ⚙️ Configuration
 
@@ -196,6 +184,7 @@ The game uses Tailwind CSS for styling with a clean, modern design:
 - `npm test`: Run tests in watch mode
 - `npm run test:run`: Run tests once
 - `npm run test:ui`: Run tests with UI
+- `npm run test:coverage`: Run tests with coverage report
 
 ### Code Quality
 
@@ -227,13 +216,6 @@ The project includes comprehensive GitHub Actions workflows:
 - **Dependency Check**: Outdated package detection
 - **Build Size Analysis**: Monitor build output size
 
-### Deployment (`deploy.yml`)
-
-- **GitHub Pages**: Automatic deployment to GitHub Pages
-- **Quality Gates**: Only deploys if all checks pass
-- **Production Build**: Optimized build for deployment
-- **Manual Trigger**: Can be triggered manually via workflow_dispatch
-
 ### Running CI Locally
 
 ```bash
@@ -242,21 +224,11 @@ npm run format:check
 npm run lint
 npm run typecheck
 npm run test:run
+npm run test:coverage  # Run tests with coverage
 npm run build
 ```
 
-## 📝 Assumptions and Design Decisions
-
-1. **Board Size**: Default 20×20 provides good balance of challenge and playability
-2. **Movement Speed**: 200ms interval gives responsive but manageable gameplay
-3. **Scoring**: 3 points per food item creates meaningful progression
-4. **Win Condition**: 30 points provides achievable but challenging goal
-5. **Food Placement**: Random placement excluding snake positions
-6. **Direction Changes**: Prevented direct reversal to avoid accidental self-collision
-7. **Auto-Start**: Game starts automatically when component mounts
-8. **Type Safety**: Uses const objects with `as const` instead of enums for better TypeScript patterns
-
-## 🚀 Future Enhancements
+## 🚀 TODO
 
 Potential improvements for future versions:
 
@@ -267,7 +239,3 @@ Potential improvements for future versions:
 - **Multiplayer**: Local or online multiplayer support
 - **Power-ups**: Special food items with different effects
 - **Themes**: Multiple visual themes and color schemes
-
-## 📄 License
-
-This project is open source and available under the MIT License.
