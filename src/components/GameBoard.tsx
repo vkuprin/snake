@@ -6,11 +6,7 @@ interface GameBoardProps {
   food: Position;
 }
 
-export function GameBoard({
-  boardSize,
-  snake,
-  food,
-}: GameBoardProps) {
+export function GameBoard({ boardSize, snake, food }: GameBoardProps) {
   const snakePositions = new Set(snake.map((pos) => `${pos.x},${pos.y}`));
   const headPosition = snake.length > 0 ? `${snake[0].x},${snake[0].y}` : "";
   const foodPosition = `${food.x},${food.y}`;

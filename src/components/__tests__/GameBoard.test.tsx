@@ -60,8 +60,6 @@ describe("GameBoard", () => {
     expect(emptyCell).toHaveClass("bg-white");
   });
 
-
-
   it("should handle different board sizes", () => {
     render(<GameBoard {...defaultProps} boardSize={3} />);
 
