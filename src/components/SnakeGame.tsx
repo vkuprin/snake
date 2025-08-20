@@ -86,12 +86,11 @@ export function SnakeGame({
         </div>
       </div>
 
-      <div className="flex-1 p-2">
+      <div className="flex-1 flex items-center justify-center p-2">
         <GameBoard
           boardSize={gameState.boardSize}
           snake={gameState.snake}
           food={gameState.food}
-          className="w-full h-full"
         />
       </div>
     </div>

@@ -60,12 +60,7 @@ describe("GameBoard", () => {
     expect(emptyCell).toHaveClass("bg-white");
   });
 
-  it("should apply custom className", () => {
-    render(<GameBoard {...defaultProps} className="custom-class" />);
 
-    const board = screen.getByTestId("game-board");
-    expect(board).toHaveClass("custom-class");
-  });
 
   it("should handle different board sizes", () => {
     render(<GameBoard {...defaultProps} boardSize={3} />);

@@ -4,14 +4,12 @@ interface GameBoardProps {
   boardSize: number;
   snake: Position[];
   food: Position;
-  className?: string;
 }
 
 export function GameBoard({
   boardSize,
   snake,
   food,
-  className = "",
 }: GameBoardProps) {
   const snakePositions = new Set(snake.map((pos) => `${pos.x},${pos.y}`));
   const headPosition = snake.length > 0 ? `${snake[0].x},${snake[0].y}` : "";
@@ -35,7 +33,7 @@ export function GameBoard({
         <div
           key={position}
           className={`
-            w-full h-full border border-gray-400 aspect-square
+            aspect-square border border-gray-400
             ${cellType === "snake-head" ? "bg-green-600" : ""}
             ${cellType === "snake-body" ? "bg-green-400" : ""}
             ${cellType === "food" ? "bg-blue-500" : ""}
@@ -50,18 +48,13 @@ export function GameBoard({
 
   return (
     <div
-      className={`
-        grid gap-0 border-2 border-gray-800 bg-white
-        ${className}
-      `}
+      className="grid gap-0 border-2 border-gray-800 bg-white"
       style={{
-        gridTemplateColumns: `repeat(${boardSize}, minmax(0, 1fr))`,
-        gridTemplateRows: `repeat(${boardSize}, minmax(0, 1fr))`,
-        width: "100%",
-        height: "100%",
-        maxWidth: "100vw",
-        maxHeight: "calc(100vh - 80px)",
+        gridTemplateColumns: `repeat(${boardSize}, 1fr)`,
+        gridTemplateRows: `repeat(${boardSize}, 1fr)`,
         aspectRatio: "1",
+        width: "min(100vw - 16px, calc(100vh - 100px))",
+        height: "min(100vw - 16px, calc(100vh - 100px))",
       }}
       data-testid="game-board"
     >
