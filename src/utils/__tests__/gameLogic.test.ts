@@ -19,7 +19,7 @@ describe("gameLogic", () => {
       const state = createInitialGameState();
 
       expect(state.snake).toHaveLength(3);
-      expect(state.snake[0]).toEqual({ x: 10, y: 10 }); // head at center
+      expect(state.snake[0]).toEqual({ x: 10, y: 10 });
       expect(state.snake[1]).toEqual({ x: 9, y: 10 });
       expect(state.snake[2]).toEqual({ x: 8, y: 10 });
       expect(state.direction).toBe(Direction.RIGHT);
@@ -34,7 +34,7 @@ describe("gameLogic", () => {
       const state = createInitialGameState(customConfig);
 
       expect(state.boardSize).toBe(10);
-      expect(state.snake[0]).toEqual({ x: 5, y: 5 }); // head at center of 10x10
+      expect(state.snake[0]).toEqual({ x: 5, y: 5 });
     });
   });
 
@@ -53,7 +53,6 @@ describe("gameLogic", () => {
       expect(food.y).toBeGreaterThanOrEqual(0);
       expect(food.y).toBeLessThan(20);
 
-      // Food should not be on any snake segment
       const foodPosition = `${food.x},${food.y}`;
       const snakePositions = snake.map((pos) => `${pos.x},${pos.y}`);
       expect(snakePositions).not.toContain(foodPosition);
@@ -161,14 +160,14 @@ describe("gameLogic", () => {
       const newState = updateGameState(initialState);
 
       expect(newState.snake).toHaveLength(3);
-      expect(newState.snake[0]).toEqual({ x: 11, y: 10 }); // moved right
+      expect(newState.snake[0]).toEqual({ x: 11, y: 10 });
       expect(newState.score).toBe(0);
     });
 
     it("should end game when hitting wall", () => {
       const stateNearWall = {
         ...initialState,
-        snake: [{ x: 19, y: 10 }], // at right edge
+        snake: [{ x: 19, y: 10 }],
         direction: Direction.RIGHT,
       };
 
@@ -180,12 +179,12 @@ describe("gameLogic", () => {
       const stateWithSelfCollision = {
         ...initialState,
         snake: [
-          { x: 5, y: 5 }, // head
+          { x: 5, y: 5 },
           { x: 4, y: 5 },
           { x: 3, y: 5 },
           { x: 3, y: 4 },
           { x: 4, y: 4 },
-          { x: 5, y: 4 }, // this will be hit when moving up
+          { x: 5, y: 4 },
         ],
         direction: Direction.UP,
       };
@@ -197,21 +196,21 @@ describe("gameLogic", () => {
     it("should increase score and grow snake when eating food", () => {
       const stateWithFoodAhead = {
         ...initialState,
-        food: { x: 11, y: 10 }, // food directly ahead
+        food: { x: 11, y: 10 },
       };
 
       const newState = updateGameState(stateWithFoodAhead);
 
       expect(newState.score).toBe(3);
-      expect(newState.snake).toHaveLength(4); // grew by 1
-      expect(newState.food).not.toEqual({ x: 11, y: 10 }); // new food generated
+      expect(newState.snake).toHaveLength(4);
+      expect(newState.food).not.toEqual({ x: 11, y: 10 });
     });
 
     it("should end game when reaching max score", () => {
       const stateNearWin = {
         ...initialState,
-        score: 27, // 3 points away from winning
-        food: { x: 11, y: 10 }, // food directly ahead
+        score: 27,
+        food: { x: 11, y: 10 },
       };
 
       const newState = updateGameState(stateNearWin, {

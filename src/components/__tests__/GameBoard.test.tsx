@@ -7,9 +7,9 @@ describe("GameBoard", () => {
   const defaultProps = {
     boardSize: 5,
     snake: [
-      { x: 2, y: 2 }, // head
-      { x: 1, y: 2 }, // body
-      { x: 0, y: 2 }, // tail
+      { x: 2, y: 2 },
+      { x: 1, y: 2 },
+      { x: 0, y: 2 },
     ] as Position[],
     food: { x: 4, y: 4 } as Position,
   };
@@ -20,7 +20,6 @@ describe("GameBoard", () => {
     const board = screen.getByTestId("game-board");
     expect(board).toBeInTheDocument();
 
-    // Should have 5x5 = 25 cells
     const cells = screen.getAllByTestId(/^cell-\d+-\d+$/);
     expect(cells).toHaveLength(25);
   });
@@ -71,7 +70,6 @@ describe("GameBoard", () => {
   it("should handle different board sizes", () => {
     render(<GameBoard {...defaultProps} boardSize={3} />);
 
-    // Should have 3x3 = 9 cells
     const cells = screen.getAllByTestId(/^cell-\d+-\d+$/);
     expect(cells).toHaveLength(9);
   });
@@ -79,10 +77,9 @@ describe("GameBoard", () => {
   it("should handle empty snake", () => {
     render(<GameBoard {...defaultProps} snake={[]} />);
 
-    // All cells should be empty except food
     const emptyCells = screen
       .getAllByTestId(/^cell-\d+-\d+$/)
       .filter((cell) => cell.getAttribute("data-cell-type") === "empty");
-    expect(emptyCells).toHaveLength(24); // 25 - 1 food cell
+    expect(emptyCells).toHaveLength(24);
   });
 });

@@ -60,7 +60,7 @@ export function GameBoard({
         width: "100%",
         height: "100%",
         maxWidth: "100vw",
-        maxHeight: "calc(100vh - 80px)", // Account for top bar
+        maxHeight: "calc(100vh - 80px)",
         aspectRatio: "1",
       }}
       data-testid="game-board"

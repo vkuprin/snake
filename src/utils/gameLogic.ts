@@ -115,7 +115,6 @@ export const updateGameState = (
   const head = currentState.snake[0];
   const nextPosition = getNextPosition(head, currentState.direction);
 
-  // Check for wall collision
   if (isOutOfBounds(nextPosition, currentState.boardSize)) {
     return {
       ...currentState,
@@ -123,7 +122,6 @@ export const updateGameState = (
     };
   }
 
-  // Check for self collision
   if (isCollisionWithSelf(nextPosition, currentState.snake)) {
     return {
       ...currentState,
@@ -131,16 +129,13 @@ export const updateGameState = (
     };
   }
 
-  // Create new snake with new head
   const newSnake = [nextPosition, ...currentState.snake];
 
-  // Check if food is eaten
   const foodEaten = positionsEqual(nextPosition, currentState.food);
 
   if (foodEaten) {
     const newScore = currentState.score + 3;
 
-    // Check for win condition
     if (newScore >= config.maxScore) {
       return {
         ...currentState,
@@ -150,7 +145,6 @@ export const updateGameState = (
       };
     }
 
-    // Generate new food and keep snake length
     return {
       ...currentState,
       snake: newSnake,
@@ -158,7 +152,6 @@ export const updateGameState = (
       score: newScore,
     };
   } else {
-    // Remove tail if no food eaten
     newSnake.pop();
     return {
       ...currentState,

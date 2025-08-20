@@ -39,7 +39,6 @@ describe("useSnakeGame", () => {
   it("should not change direction when invalid (reverse)", () => {
     const { result } = renderHook(() => useSnakeGame());
 
-    // Initial direction is RIGHT, so LEFT should be invalid
     act(() => {
       result.current.changeDirection(Direction.LEFT);
     });
@@ -50,7 +49,6 @@ describe("useSnakeGame", () => {
   it("should reset game to initial state", () => {
     const { result } = renderHook(() => useSnakeGame());
 
-    // Change some state first
     act(() => {
       result.current.changeDirection(Direction.UP);
     });
@@ -67,7 +65,6 @@ describe("useSnakeGame", () => {
   it("should toggle pause correctly", () => {
     const { result } = renderHook(() => useSnakeGame());
 
-    // Pause the game
     act(() => {
       result.current.togglePause();
     });
@@ -76,7 +73,6 @@ describe("useSnakeGame", () => {
     expect(result.current.isPaused).toBe(true);
     expect(result.current.isGameRunning).toBe(false);
 
-    // Resume the game
     act(() => {
       result.current.togglePause();
     });
@@ -108,14 +104,12 @@ describe("useSnakeGame", () => {
 
     const initialHeadPosition = result.current.gameState.snake[0];
 
-    // Advance timer by one tick
     act(() => {
       vi.advanceTimersByTime(100);
     });
 
     const newHeadPosition = result.current.gameState.snake[0];
 
-    // Snake should have moved right (initial direction)
     expect(newHeadPosition.x).toBe(initialHeadPosition.x + 1);
     expect(newHeadPosition.y).toBe(initialHeadPosition.y);
   });
@@ -129,21 +123,18 @@ describe("useSnakeGame", () => {
       }),
     );
 
-    // Pause the game
     act(() => {
       result.current.togglePause();
     });
 
     const initialHeadPosition = result.current.gameState.snake[0];
 
-    // Advance timer
     act(() => {
       vi.advanceTimersByTime(100);
     });
 
     const newHeadPosition = result.current.gameState.snake[0];
 
-    // Snake should not have moved
     expect(newHeadPosition).toEqual(initialHeadPosition);
   });
 
@@ -157,7 +148,7 @@ describe("useSnakeGame", () => {
     const { result } = renderHook(() => useSnakeGame(customConfig));
 
     expect(result.current.gameState.boardSize).toBe(10);
-    // Snake should be positioned at center of 10x10 board
+
     expect(result.current.gameState.snake[0]).toEqual({ x: 5, y: 5 });
   });
 });

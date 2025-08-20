@@ -23,7 +23,6 @@ export function SnakeGame({
     isGameRunning,
   } = useSnakeGame(config);
 
-  // Set up keyboard controls
   useKeyboardControls({
     onDirectionChange: changeDirection,
     onPause: togglePause,
@@ -37,7 +36,6 @@ export function SnakeGame({
       className={`min-h-screen bg-gray-100 flex flex-col ${className}`}
       data-testid="snake-game"
     >
-      {/* Top Bar with Score and Controls */}
       <div className="bg-white shadow-sm border-b p-2">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-6">
@@ -88,7 +86,6 @@ export function SnakeGame({
         </div>
       </div>
 
-      {/* Game Board - Full Screen */}
       <div className="flex-1 p-2">
         <GameBoard
           boardSize={gameState.boardSize}
